@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Spring Boot Tutorials</title>
+	<script src="https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/ext/hx-ws.min.js"></script>
+	<style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0;}
+        .container { max-width: 500px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .message-box { padding: 15px; border: 1px solid #e1e8ed; border-radius: 6px; text-align: center; }
+        .field { width: 250px; height: 30px; padding: 5px;}
+    </style>
 </head>
 <body>
-
+	<div class="container">
+		<h1>Spring Boot Tutorial</h1>
+        
+        <div hx-ws:connect="/message">
+        	<form hx-ws:send>
+        		<label for="chatMessage-1">Text 1: </label><input type="text" name="chatMessage-1" placeholder="Type a message..." required class="field"/><br />
+        		<label for="chatMessage-2">Text 2: </label><input type="text" name="chatMessage-2" placeholder="Type a message..." required class="field"/><br />
+        		<button type="submit" class="field">Click to update Message!</button>
+        	</form>
+            <div id="message" class="message-box">
+                <h2>Message</h2>
+                <p>Wait for live Message data...</p>
+            </div>
+            
+        </div>
+    </div>
 </body>
 </html>
